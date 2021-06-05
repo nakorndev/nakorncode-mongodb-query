@@ -1,0 +1,37 @@
+extends layouts/default.pug
+
+block content
+  h1.title Edit #{user.name} (ID #{user.id})
+  form(method="POST" action=`/users/${user.id}?_method=PUT` enctype="multipart/form-data")
+    .field
+      .control
+        label.label ID:
+        input.input(type="number" name="id" value=user.id disabled)
+    .field
+      .control
+        label.label Name:
+        input.input(type="text" name="name" value=user.name)
+    .field
+      .control
+        label.label Age:
+        input.input(type="number" name="age" value=user.age)
+    .field
+      label.label Gender:
+      .control
+        label.radio
+          input(type="radio" name="gender" value="male" checked=user.gender == 'male')
+          span.ml-1 Male
+        label.radio
+          input(type="radio" name="gender" value="female" checked=user.gender == 'female')
+          span.ml-1 Female
+    .field
+      .control
+        label.label Salary:
+        input.input(type="number" name="salary" value=user.salary step="100")
+    .field
+      label.label Avatar:
+      input(type="file" name="avatar" accept="image/*")
+    hr
+    .field
+      button.button.is-link Update
+        

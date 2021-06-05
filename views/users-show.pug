@@ -1,0 +1,12 @@
+extends layouts/default.pug
+
+block content
+  h1.title #{user.firstName} #{user.lastName}
+  .content
+    ul
+      li #[b ID:] #{user._id}
+      li #[b Age:] #{user.age}
+      li #[b Salary:] #{Number(user.salary).toLocaleString()}
+      li #[b Skills:] #{user.skills.join(', ')}
+      li
+        a(href=`/users/${user.id}/edit`) Edit this user
